@@ -1,1 +1,8 @@
 <p>pokemons-list works!</p>
+
+<ul>
+  <li *ngFor="let pokemon of pokemons">
+    <p>{{ pokemon.id }}</p>
+    <p>{{ pokemon.name }}</p>
+  </li>
+</ul>
