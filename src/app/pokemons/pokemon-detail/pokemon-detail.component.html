@@ -1,0 +1,7 @@
+<h2>{{ pokemon.name }}</h2>
+<img src="assets/img/official-artwork/{{ id }}.png">
+<p>Taille : {{ pokemon.height }} m</p>
+<p>Poids : {{ pokemon.weight }} kg</p>
+<ul>Types
+  <li *ngFor="let type of pokemon.types">{{ type }}</li>
+</ul>
