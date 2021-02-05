@@ -1,8 +1,32 @@
-<h2>{{ pokemon.name }}</h2>
-<audio autoplay src="assets/audio/{{id}}.mp3"></audio>
-<img src="assets/img/official-artwork/{{ id }}.png">
-<p>Taille : {{ pokemon.height }} m</p>
-<p>Poids : {{ pokemon.weight }} kg</p>
-<ul>Types
-  <li *ngFor="let type of pokemon.types">{{ type }}</li>
-</ul>
+<mat-card>
+  <mat-grid-list cols="2" rowHeight="250px">
+    <mat-grid-tile>
+      <div id="pok-pic">
+        <img src="assets/img/official-artwork/{{ id }}.png" alt="{{pokemon.name}} image" mat-card-xl-image>
+        <p>N° {{pokemon.id | number:'3.0'}}</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-list>
+        <mat-list-item>
+          <span id="pok-name">{{pokemon.name}}</span>
+          <mat-icon aria-hidden="false" aria-label="play sound" (click)="pokeScream.play()">volume_up</mat-icon>
+          <audio #pokeScream autoplay src="assets/audio/{{id}}.mp3"></audio>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip *ngFor="let type of pokemon.types">{{type}}</mat-chip>
+          </mat-chip-list>
+        </mat-list-item>
+        <mat-list-item>Taille : {{pokemon.height | number:'1.1'}} m</mat-list-item>
+        <mat-list-item>Masse : {{pokemon.weight | number:'1.1'}} kg</mat-list-item>
+      </mat-list>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">{{pokemon.description}}</mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
+<nav>
+  <a mat-fab routerLink="/pokemons">
+    <mat-icon>home</mat-icon>
+  </a>
+</nav>
