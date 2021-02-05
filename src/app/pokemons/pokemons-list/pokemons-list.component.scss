@@ -1,4 +1,8 @@
-a {
-  color: white;
-  text-decoration: none;
+#poke-list{
+  overflow: scroll;
+  position: fixed;
+  left: 0;
+  height: 100%;
+  width: 200px;
+  border-right: azure 1px dashed;
 }

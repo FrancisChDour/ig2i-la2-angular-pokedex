@@ -1,11 +1,8 @@
-<h2>Pokemons</h2>
-<mat-list>
-  <mat-list-item *ngFor="let pokemon of pokemons">
-    <a  [routerLink]="['/pokemon/' + pokemon.id]">
-      <img matListAvatar src="assets/img/sprites/{{pokemon.id}}.png" alt="{{ pokemon.name }}">
-      <p matLine>
-        <span> {{pokemon.id}}. {{pokemon.name}} </span>
-      </p>
-    </a>
-  </mat-list-item>
-</mat-list>
+<mat-nav-list id="poke-list" infinite-scroll [scrollWindow]="false" (scrolled)="onScroll()">
+  <a mat-list-item *ngFor="let pokemon of pokemons" [routerLink]="['/pokemon/' + pokemon.id]">
+    <img matListAvatar src="assets/img/sprites/{{pokemon.id}}.png" alt="{{ pokemon.name }}">
+    <p matLine>
+      <span> {{pokemon.id}}. {{pokemon.name}} </span>
+    </p>
+  </a>
+</mat-nav-list>
