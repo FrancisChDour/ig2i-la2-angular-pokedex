@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Pokemon} from '../pokemon.model';
 import {PokemonService} from '../pokemon.service';
@@ -8,19 +8,20 @@ import {PokemonService} from '../pokemon.service';
   templateUrl: './pokemon-detail.component.html',
   styleUrls: ['./pokemon-detail.component.scss']
 })
-export class PokemonDetailComponent implements OnInit {
+export class PokemonDetailComponent implements OnInit, OnChanges {
 
-  id!: string;
+  @Input() id?: number;
   pokemon!: Pokemon;
 
   constructor(public route: ActivatedRoute, private pokemonService: PokemonService) {
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id != null) {
-      this.id = id;
-      this.pokemonService.getPokemon(id).subscribe(response => this.pokemon = response);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.id && changes.id.currentValue !== changes.id.previousValue){
+      this.pokemonService.getPokemon(String(this.id)).subscribe(response => this.pokemon = response);
     }
   }
 }

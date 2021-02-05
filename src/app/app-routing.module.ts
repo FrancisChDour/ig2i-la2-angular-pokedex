@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {PokemonsListComponent} from './pokemons/pokemons-list/pokemons-list.component';
 import {PokemonDetailComponent} from './pokemons/pokemon-detail/pokemon-detail.component';
+import {PokedexComponent} from './pokemons/pokedex/pokedex.component';
 
 const routes: Routes = [
   { path: 'pokemons', component: PokemonsListComponent },
-  { path: 'pokemon/:id', component: PokemonDetailComponent }
+  { path: 'pokemon/:id', component: PokemonDetailComponent },
+  { path: 'pokedex', component: PokedexComponent }
 ];
 
 @NgModule({

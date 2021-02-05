@@ -17,6 +17,10 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
     PokemonsListComponent,
     PokemonDetailComponent
   ],
+  exports: [
+    PokemonsListComponent,
+    PokemonDetailComponent
+  ],
   imports: [
     CommonModule,
     MatListModule,

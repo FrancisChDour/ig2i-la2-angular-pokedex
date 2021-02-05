@@ -1,5 +1,5 @@
 <mat-nav-list id="poke-list" infinite-scroll [scrollWindow]="false" (scrolled)="onScroll()">
-  <a mat-list-item *ngFor="let pokemon of pokemons" [routerLink]="['/pokemon/' + pokemon.id]">
+  <a mat-list-item *ngFor="let pokemon of pokemons"(click)="onSelect(pokemon)">
     <img matListAvatar src="assets/img/sprites/{{pokemon.id}}.png" alt="{{ pokemon.name }}">
     <p matLine>
       <span> {{pokemon.id}}. {{pokemon.name}} </span>
