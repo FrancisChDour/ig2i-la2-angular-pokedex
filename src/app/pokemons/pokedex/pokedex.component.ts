@@ -14,7 +14,6 @@ export class PokedexComponent implements OnInit {
   }
 
   onEvent($event: number): void {
-    console.log($event);
     this.id = $event;
   }
 }

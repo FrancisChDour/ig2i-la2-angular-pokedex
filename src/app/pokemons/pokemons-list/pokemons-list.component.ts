@@ -10,6 +10,7 @@ import {Pokemon} from '../pokemon.model';
 export class PokemonsListComponent implements OnInit {
 
   pokemons!: Pokemon[];
+  search?: string;
 
   @Output() pokemonEventEmitter =  new EventEmitter<number>();
 
@@ -20,10 +21,13 @@ export class PokemonsListComponent implements OnInit {
   }
 
   onScroll(): void {
-    console.log('Scrolled');
   }
 
   onSelect(pokemon: Pokemon): void {
     this.pokemonEventEmitter.emit(pokemon.id);
+  }
+
+  onSearch($event: string): void{
+    this.pokemonService.getPokemonsLikeName($event).subscribe(response => this.pokemons = response.data);
   }
 }

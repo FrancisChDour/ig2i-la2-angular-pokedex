@@ -18,6 +18,13 @@ export class PokemonService {
     return this.http.get<ApiResponse>(this.getPokemonsUrl);
   }
 
+  getPokemonsLikeName(search: string): Observable<ApiResponse>{
+    if ('' !== search){
+      return this.http.get<ApiResponse>(this.getPokemonsUrl + '&search=' + search);
+    }
+    return this.getPokemons();
+  }
+
   getPokemon(id: string): Observable<Pokemon>{
     return this.http.get<Pokemon>(this.getPokemonByIdUrl + id);
   }
